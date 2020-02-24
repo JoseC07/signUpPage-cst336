@@ -35,7 +35,7 @@ $("#state").on("change", function() {
     
     $.ajax({
         method: "GET",
-            url: "http://cst336.herokuapp.com/projects/api/countyListAPI.php",
+            url: "https://itcdland.csumb.edu/~milara/ajax/countyList.php?state=ca",
         dataType: "json",
             data: { "state": $("#state").val() },
         success: function(result,status) {
