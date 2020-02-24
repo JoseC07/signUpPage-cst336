@@ -34,7 +34,7 @@ $("#state").on("change", function() {
     
     $.ajax({
         method: "GET",
-            url: "https://cst336.herokuapp.com/projects/api/countyListAPI.php",
+            url: "http://cst336.herokuapp.com/projects/api/countyListAPI.php",
         dataType: "json",
             data: { "state": $("#state").val() },
         success: function(result,status) {
@@ -49,29 +49,29 @@ $("#state").on("change", function() {
     });//ajax
 }); //state
     
-    $("#username").change(function() {
-        
-        //alert($("#username").val());
-        $.ajax({
-            method: "GET",
-                url: "https://cst336.herokuapp.com/projects/api/usernamesAPI.php",
-            dataType: "json",
-                data: { "username":$("#username").val() },
-            success: function(result,status) {
-                
-                        if(result.available){
-                            $("#usernameError").html("Username is available!");
-                            $("#usernameError").css("color", "green");
-                            usernameAvailable = true;
-                        }
-                        else {
-                            $("#usernameError").html("Username is unavailable!");
-                            $("#usernameError").css("color", "red");
-                            usernameAvailable = false;
-                        }               
+$("#username").change(function() {
+    
+    //alert($("#username").val());
+    $.ajax({
+        method: "GET",
+            url: "http://cst336.herokuapp.com/projects/api/usernamesAPI.php",
+        dataType: "json",
+            data: { "username":$("#username").val() },
+        success: function(result,status) {
+            
+                    if(result.available){
+                        $("#usernameError").html("Username is available!");
+                        $("#usernameError").css("color", "green");
+                        usernameAvailable = true;
                     }
-        });//ajax
-    }); //username
+                    else {
+                        $("#usernameError").html("Username is unavailable!");
+                        $("#usernameError").css("color", "red");
+                        usernameAvailable = false;
+                    }               
+                }
+    });//ajax
+}); //username
     
 $("#signupForm").submit(function(event){
     
