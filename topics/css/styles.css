@@ -1,0 +1,47 @@
+
+h1{
+    text-align: center;
+    color: black;
+	text-decoration: none;
+	font-size: 2em;
+	
+    text-transform: uppercase;
+    background-color: lightblue;
+	border: 2px solid black;
+}
+
+#signupForm{
+    text-align: center;
+}
+
+body{
+    background-color: lightblue;
+}
+.row {
+    
+    margin-right: 300px;
+    margin-left: 300px;
+    background-color: white;
+    border: 4px solid;
+    display: flex;
+    justify-content: center;
+}
+  
+.column {
+    flex: 33.33%;
+    padding: 5px;
+}
+
+#submit{
+	color: black;
+	text-decoration: none;
+	font-size: 2em;
+	display: inline-block;
+    text-transform: uppercase;
+    background-color: lightblue;
+	border: 2px solid black;
+	
+}
+#submit:hover{
+    opacity: .5;
+}
