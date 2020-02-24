@@ -18,12 +18,13 @@ $("#zip").on("change", function(){
                 console.log(result);
                 $("#city").html(result.city);
             
-            },
-            error : function(data, errortype){
-                console.log(data);
-                console.log(errortype);
-                console.log( "|" + $("#zip").val() + "|");
             }
+            // ,
+            // error : function(data, errortype){
+            //     console.log(data);
+            //     console.log(errortype);
+            //     console.log( "|" + $("#zip").val() + "|");
+            // }
             
         });//ajax
     });//zip
@@ -58,18 +59,20 @@ $("#username").change(function() {
         dataType: "json",
             data: { "username":$("#username").val() },
         success: function(result,status) {
-            
-                    if(result.available){
-                        $("#usernameError").html("Username is available!");
-                        $("#usernameError").css("color", "green");
-                        usernameAvailable = true;
-                    }
-                    else {
-                        $("#usernameError").html("Username is unavailable!");
-                        $("#usernameError").css("color", "red");
-                        usernameAvailable = false;
-                    }               
-                }
+               
+            if(result.available){
+                $("#usernameError").html("Username is available!");
+                $("#usernameError").css("color", "green");
+                
+                usernameAvailable = true;
+                
+            }
+            else {
+                $("#usernameError").html("Username is unavailable!");
+                $("#usernameError").css("color", "red");
+                usernameAvailable = false;
+            }               
+        }
     });//ajax
 }); //username
     
@@ -87,14 +90,22 @@ function isFormValid(){
     if (!usernameAvailable) {
         isValid = false;
     }
-    
+    if ($("#username").val().length < 6) {
+        isValid = false;
+        $("#usernameError").html("Username is short");
+        $("#usernameError").css("color", "red");
+    }
+
     if ($("#username").val().length == 0) {
         isValid = false;
         $("#usernameError").html("Username is required");
+        $("#usernameError").css("color", "red");
     }
+
     
     if ($("#password").val() != $("#passwordAgain").val()){
     $("#passwordAgainError").html("Password Mismatch!");
+    $("#passwordAgainError").css("color", "red");
     isValid = false;
     }
     return isValid;
