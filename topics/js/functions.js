@@ -12,13 +12,18 @@ $("#zip").on("change", function(){
             dataType: "json",
             data: { "zip": $("#zip").val() },
             success: function(result,status) {
-                
+                if(!result.available)
+                {
+                    $("#zipError").html("Zip is unavailable!");
+                    $("#zipError").css("color", "red");
+                }
                 //alert(result.city);
                 $("#long").html(result.longitude);
                 $("#lat").html(result.latitude);
                 $("#city").html(result.city);
             
             }
+            
             // ,
             // error : function(data, errortype){
             //     console.log(data);
