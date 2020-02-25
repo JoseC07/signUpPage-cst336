@@ -29,6 +29,8 @@ $("#zip").on("change", function(){
         });//ajax
     });//zip
 
+
+
 $.ajax({
     method: "GET",
     url: "https://itcdland.csumb.edu/~milara/ajax/states.php",
@@ -37,7 +39,7 @@ $.ajax({
     {
         $("#state").html("<option> Select One </option>");
             for (let i=0; i < result.length; i++){
-                $("#state").append("<option>" + result[i].state + "</option>");
+                $("#state").append("<option value="+result[i].usps+">" + result[i].state + "</option>");
             }
             
         
@@ -45,10 +47,10 @@ $.ajax({
 
 });
 
-
 $("#state").on("change", function() {
     
     //alert($("#state").val());
+    
     
     $.ajax({
         method: "GET",
