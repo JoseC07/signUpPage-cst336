@@ -14,8 +14,8 @@ $("#zip").on("change", function(){
             success: function(result,status) {
                 
                 //alert(result.city);
-                console.log("hello");
-                console.log(result);
+                $("#long").html(result.longitude);
+                $("#lat").html(result.latitude);
                 $("#city").html(result.city);
             
             }
@@ -28,7 +28,24 @@ $("#zip").on("change", function(){
             
         });//ajax
     });//zip
-    
+
+$.ajax({
+    method: "GET",
+    url: "https://itcdland.csumb.edu/~milara/ajax/states.php",
+    dataType: "json",
+    success: function(result,status)
+    {
+        $("#state").html("<option> Select One </option>");
+            for (let i=0; i < result.length; i++){
+                $("#state").append("<option>" + result[i].state + "</option>");
+            }
+            
+        
+    }
+
+});
+
+
 $("#state").on("change", function() {
     
     //alert($("#state").val());
